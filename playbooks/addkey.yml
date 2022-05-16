@@ -1,0 +1,10 @@
+# Add current user's pubkey to remote user
+- hosts: all
+  vars:
+    pubkey_file: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+  tasks:
+    - name: Add public key file to remote host's authorized_keys
+      ansible.posix.authorized_key:
+        user: '{{ ansible_user }}'
+        state: present
+        key: '{{ pubkey_file }}'

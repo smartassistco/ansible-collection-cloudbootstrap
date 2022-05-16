@@ -1,0 +1,3 @@
+---
+- shell: 'amazon-linux-extras install docker -y'
+  become: yes

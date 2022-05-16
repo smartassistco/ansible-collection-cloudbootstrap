@@ -1,0 +1,10 @@
+- name: Create $HOME/.docker directory
+  file:
+    path: '{{ ansible_user_dir }}/.docker/'
+    state: directory
+
+- name: Create $HOME/.docker/config.json file
+  ansible.builtin.template:
+    src: config.j2
+    dest: '{{ ansible_user_dir }}/.docker/config.json'
+

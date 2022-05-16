@@ -1,0 +1,24 @@
+---
+- name: Disable Docker repo
+  shell: 'amazon-linux-extras disable docker'
+
+- name: Install ECS Agent
+  shell: 'amazon-linux-extras install -y ecs'
+
+- name: Adding '{{ ansible_user }}' to 'docker' group
+  user:
+    name: '{{ ansible_user }}'
+    groups: docker
+    append: yes
+
+- name: Add cluster name in /etc/ecs/ecs.config
+  lineinfile:
+    path: /etc/ecs/ecs.config
+    line: 'ECS_CLUSTER={{ ecs_cluster_name }}'
+    create: yes
+
+- name: Start ECS Agent on boot
+  systemd:
+    name: ecs
+    state: started
+    enabled: yes

@@ -1,0 +1,56 @@
+---
+# Update all packages
+- name: Update all packages
+  ansible.builtin.package:
+    name: *
+    state: latest
+  when:
+    - enable_update_packages
+
+- name: Set timezone to UTC
+  community.general.timezone:
+    name: UTC
+  when:
+    - enable_set_timezone_utc
+
+- name: Set hostname
+  ansible.builtin.hostname:
+    name: '{{ hostname }}'
+  when:
+    - hostname is defined
+
+- name: Enable passwordless sudo for sudoers group
+  block:
+    - name: Ensure sudoers group exists
+      ansible.builtin.group:
+        name: '{{ sudoers_group }}'
+        state: present
+
+    - name: Allow sudoers group to sudo without password
+      ansible.builtin.copy:
+        content: '%{{ sudoers_group }} ALL=(ALL:ALL) NOPASSWD:ALL'
+        dest: '/etc/sudoers.d/{{ sudoers_group }}_nopasswd'
+        mode: 0440
+        validate: /usr/sbin/visudo -csf %s
+  vars:
+    - sudoers_group: '{{ (sudoers_group_override is defined) | ternary(sudoers_group_override, _sudoers_group) }}'
+  when:
+    - enable_passwordless_sudo
+
+- name: Basic sshd hardening
+  ansible.builtin.lineinfile:
+    path: '/etc/ssh/sshd_config'
+    regex: '^(#)?{{item.key}}'
+    line: '{{item.key}} {{item.value}}'
+    state: present
+  loop:
+    - { key: 'PermitRootLogin', value: 'no' }
+    - { key: 'PasswordAuthentication', value: 'no' }
+    - { key: 'X11Forwarding', value: 'no' }
+    - { key: 'LoginGraceTime', value: '20' }
+    - { key: 'MaxAuthTries', value: '3' }
+    - { key: 'GSSAPIAuthentication', value: 'no' }
+  notify:
+    - restart sshd
+  when:
+    - enable_basic_ssh_hardening

@@ -1,0 +1,5 @@
+---
+- name: Update packages
+  include_tasks: install_updates.yml
+  when:
+    enable_update_packages

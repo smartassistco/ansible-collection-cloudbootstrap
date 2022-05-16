@@ -1,0 +1,19 @@
+---
+- name: Install amazon-ecr-credential-helper
+  ansible.builtin.package:
+    name: amazon-ecr-credential-helper
+    state: present
+  become: yes
+
+- name: Check if $HOME/.docker/config.json exists
+  stat:
+    path: '{{ ansible_user_dir }}/.docker/config.json'
+  register: docker_config_file
+
+- name: Create $HOME/.docker/config.json with ecr-login settings
+  include_tasks: docker-config_new.yml
+  when: not docker_config_file.stat.exists
+
+- name: Add ecr-login settings to $HOME/.docker/config.json
+  include_tasks: docker-config_update.yml
+  when: docker_config_file.stat.exists

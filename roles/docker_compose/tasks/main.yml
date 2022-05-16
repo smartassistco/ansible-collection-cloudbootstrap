@@ -1,0 +1,23 @@
+---
+- name: Install docker-compose
+  get_url:
+    url: 'https://github.com/docker/compose/releases/latest/download/docker-compose-{{ ansible_system }}-{{ ansible_userspace_architecture }}'
+    dest: /usr/local/bin/docker-compose
+    mode: '+x'
+  when: docker_compose_version == "latest"
+  become: yes
+
+- name: Install docker-compose
+  get_url:
+    url: 'https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-{{ ansible_system }}-{{ ansible_userspace_architecture }}'
+    dest: /usr/local/bin/docker-compose
+    mode: '+x'
+  when: docker_compose_version != "latest"
+  become: yes
+
+- name: Symlink docker-compose
+  file:
+    src: /usr/local/bin/docker-compose
+    dest: /usr/bin/docker-compose
+    state: link
+  become: yes

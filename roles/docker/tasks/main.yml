@@ -1,0 +1,26 @@
+---
+- name: Install Docker
+  include_tasks: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - '{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version | int }}.yml'
+        - '{{ ansible_distribution | lower }}.yml'
+        - '{{ ansible_os_family | lower }}.yml'
+      paths:
+        - 'install_docker'
+
+- name: Ensure Docker is started and enabled at boot
+  systemd:
+    name: docker
+    state: '{{ docker_service_state }}'
+    enabled: '{{ docker_service_enabled }}'
+  become: yes
+
+- name: Adding '{{ ansible_user }}' to 'docker' group
+  user:
+    name: '{{ ansible_user }}'
+    groups: docker
+    append: yes
+  when: add_currentuser_docker_group
+  become: yes
