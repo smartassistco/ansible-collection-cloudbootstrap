@@ -30,14 +30,14 @@ license:
 
 # The path to the license file for the collection. This path is relative to the root of the collection. This key is
 # mutually exclusive with 'license'
-license_file: LICENSE.md
+#license_file: LICENSE.md
 
 # A list of tags you want to associate with the collection for indexing/searching. A tag name has the same character
 # requirements as 'namespace' and 'name'
 tags:
   - cloud
   - docker
-  - docker-compose
+  - docker_compose
   - aws
 
 # Collections that this collection requires to be installed for it to be usable. The key of the dict is the
@@ -51,10 +51,10 @@ dependencies:
 repository: https://github.com/smartassistco/ansible-collection-cloud_bootstrap
 
 # The URL to any online docs
-documentation: https://github.com/smartassistco/ansible-collection-cloud_bootstrap/wiki
+#documentation: https://github.com/smartassistco/ansible-collection-cloud_bootstrap/wiki
 
 # The URL to the homepage of the collection/project
-homepage: https://smartassistco.github.io/projects/ansible-collections/cloud_bootstrap
+#homepage: https://smartassistco.github.io/projects/ansible-collections/cloud_bootstrap
 
 # The URL to the collection issue tracker
 issues: https://github.com/smartassistco/ansible-collection-cloud_bootstrap/issues
@@ -63,5 +63,7 @@ issues: https://github.com/smartassistco/ansible-collection-cloud_bootstrap/issu
 # artifact. A pattern is matched from the relative path of the file or directory of the collection directory. This
 # uses 'fnmatch' to match the files or directories. Some directories and files like 'galaxy.yml', '*.pyc', '*.retry',
 # and '.git' are always filtered
-build_ignore: [ ]
+build_ignore:
+  - .idea
+  - docs
 
