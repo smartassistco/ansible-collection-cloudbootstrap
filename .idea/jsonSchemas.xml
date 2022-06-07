@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JsonSchemaMappingsProjectConfiguration">
+    <state>
+      <map>
+        <entry key="Ansible Tasks File">
+          <value>
+            <SchemaInfo>
+              <option name="name" value="Ansible Tasks File" />
+              <option name="relativePathToSchema" value="https://raw.githubusercontent.com/ansible-community/schemas/main/f/ansible.json#/definitions/tasks" />
+              <option name="applicationDefined" value="true" />
+              <option name="patterns">
+                <list>
+                  <Item>
+                    <option name="pattern" value="true" />
+                    <option name="path" value="roles/**/tasks/**/*.yml" />
+                    <option name="mappingKind" value="Pattern" />
+                  </Item>
+                  <Item>
+                    <option name="pattern" value="true" />
+                    <option name="path" value="roles/**/tasks/*.yml" />
+                    <option name="mappingKind" value="Pattern" />
+                  </Item>
+                </list>
+              </option>
+            </SchemaInfo>
+          </value>
+        </entry>
+        <entry key="Ansible Vars File">
+          <value>
+            <SchemaInfo>
+              <option name="name" value="Ansible Vars File" />
+              <option name="relativePathToSchema" value="https://raw.githubusercontent.com/ansible-community/schemas/main/f/ansible-vars.json" />
+              <option name="applicationDefined" value="true" />
+              <option name="patterns">
+                <list>
+                  <Item>
+                    <option name="path" value="roles/*/defaults/main.yml" />
+                  </Item>
+                </list>
+              </option>
+            </SchemaInfo>
+          </value>
+        </entry>
+      </map>
+    </state>
+  </component>
+</project>

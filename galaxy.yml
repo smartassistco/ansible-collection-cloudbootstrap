@@ -5,7 +5,7 @@
 namespace: smartassistco
 
 # The name of the collection. Has the same character restrictions as 'namespace'
-name: cloud_bootstrap
+name: cloudbootstrap
 
 # The version of the collection. Must be compatible with semantic versioning
 version: 1.0.0
@@ -16,7 +16,7 @@ readme: README.md
 # A list of the collection's content authors. Can be just the name or in the format 'Full Name <email> (url)
 # @nicks:irc/im.site#channel'
 authors:
-  - SmartAssist Tech Private Limited
+  - SmartAssist Tech Private Limited <dev@smartassist.tech> (https://dev.smartassist.tech)
 
 
 ### OPTIONAL but strongly recommended
@@ -37,7 +37,7 @@ license:
 tags:
   - cloud
   - docker
-  - docker_compose
+  - dockercompose
   - aws
 
 # Collections that this collection requires to be installed for it to be usable. The key of the dict is the
@@ -48,16 +48,16 @@ dependencies:
   "ansible.posix": "*"
 
 # The URL of the originating SCM repository
-repository: https://github.com/smartassistco/ansible-collection-cloud_bootstrap
+repository: https://github.com/smartassistco/ansible-collection-cloudbootstrap
 
 # The URL to any online docs
-#documentation: https://github.com/smartassistco/ansible-collection-cloud_bootstrap/wiki
+documentation: https://github.com/smartassistco/ansible-collection-cloudbootstrap#readme
 
 # The URL to the homepage of the collection/project
-#homepage: https://smartassistco.github.io/projects/ansible-collections/cloud_bootstrap
+#homepage: https://smartassistco.github.io/ansible-collection-cloudbootstrap
 
 # The URL to the collection issue tracker
-issues: https://github.com/smartassistco/ansible-collection-cloud_bootstrap/issues
+issues: https://github.com/smartassistco/ansible-collection-cloudbootstrap/issues
 
 # A list of file glob-like patterns used to filter any files or directories that should not be included in the build
 # artifact. A pattern is matched from the relative path of the file or directory of the collection directory. This

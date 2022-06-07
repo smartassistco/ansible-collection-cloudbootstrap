@@ -1,4 +1,4 @@
-# Ansible Collection - Cloud Bootstrap
+# Cloud Bootstrap - Ansible Collection
 
 ## Overview
 
@@ -15,12 +15,12 @@ Ansible Collection to bootstrap new instances
 
 ### Use it in an Ansible playbook
 
-#### Add cloud_bootstrap to your `requirements.yml`
+#### Add cloudbootstrap to your `requirements.yml`
 
 ```yaml
 ---
 collections:
-  - smartassistco.cloud_bootstrap
+  - smartassistco.cloudbootstrap
 ```
 
 #### Define roles in your playbook (e.g. `initialize.yml`)
@@ -28,10 +28,10 @@ collections:
 ```yaml
 - hosts: all
   roles:
-    - smartassistco.cloud_bootstrap.initialize
-    - smartassistco.cloud_bootstrap.docker
-    - smartassistco.cloud_bootstrap.docker_compose
-    - smartassistco.cloud_bootstrap.ecr_credential_helper
+    - smartassistco.cloudbootstrap.initialize
+    - smartassistco.cloudbootstrap.docker
+    - smartassistco.cloudbootstrap.docker-compose
+    - smartassistco.cloudbootstrap.ecr-credential-helper
   vars:
     docker_service_state: restarted
     docker_compose_version: 2.5.0
@@ -47,8 +47,8 @@ collections:
 
 #### Install
 
-`ansible-galaxy collection install smartassistco.cloud_bootstrap`
+`ansible-galaxy collection install smartassistco.cloudbootstrap`
 
 #### Use directly
 
-`ansible-playbook smartassistco.cloud_bootstrap.nodeinfo`
+`ansible-playbook smartassistco.cloudbootstrap.nodeinfo`
