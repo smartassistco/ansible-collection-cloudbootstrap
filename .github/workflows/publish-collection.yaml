@@ -18,6 +18,5 @@ jobs:
         run: ansible-galaxy collection build
       - name: Publish collection
         run: |
-          echo "token: ${{ secrets.ANSIBLE-GALAXY_TOKEN }}" > ~/.ansible/galaxy_token
-          cat ~/.ansible/galaxy_token
+          echo "token: ${{ secrets.ANSIBLE_GALAXY_API_TOKEN }}" > ~/.ansible/galaxy_token
           ansible-galaxy collection publish $(ls -t *.tar.gz | head -1)
