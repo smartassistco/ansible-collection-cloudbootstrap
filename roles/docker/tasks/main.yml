@@ -15,7 +15,6 @@
     name: docker
     state: '{{ docker_service_state }}'
     enabled: '{{ docker_service_enabled }}'
-  become: yes
 
 - name: Adding '{{ ansible_user }}' to 'docker' group
   user:
@@ -23,4 +22,3 @@
     groups: docker
     append: yes
   when: add_currentuser_docker_group
-  become: yes

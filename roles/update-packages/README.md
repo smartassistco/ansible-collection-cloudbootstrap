@@ -1,7 +1,7 @@
-Docker Compose
+Update Packages
 =========
 
-Installs ECS agent on Amazon Linux 2
+Updates all packages on yum/dnf/apt based distros
 
 Requirements
 ------------
@@ -11,11 +11,7 @@ None.
 Role Variables
 --------------
 
-Required:
-
-```yaml
-ecs_cluster_name: 'my-cluster'
-```
+None.
 
 Dependencies
 ------------
@@ -28,7 +24,6 @@ Example Playbook
 ```yaml
 - hosts: servers
   roles:
-    - role: smartassistco.cloudbootstrap.ecs-agent
+    - role: smartassistco.cloudbootstrap.update-packages
       become: yes
-      ecs_cluster_name: 'my-cluster'
 ```

@@ -1,8 +1,0 @@
----
-enable_update_packages: true
-
-enable_set_timezone_utc: true
-
-enable_passwordless_sudo: true
-
-enable_basic_ssh_hardening: true

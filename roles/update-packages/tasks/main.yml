@@ -1,0 +1,8 @@
+---
+- name: Update packages with Yum
+  yum: name=* state=latest update_cache=yes
+    when: (ansible_pkg_mgr == 'yum') or (ansible_pkg_mgr == 'dnf')
+
+- name: Update packages with Apt
+  apt: upgrade=dist update_cache=yes
+    when: ansible_pkg_mgr == 'apt'
