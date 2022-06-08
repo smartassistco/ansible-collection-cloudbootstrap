@@ -28,7 +28,7 @@ Example Playbook
 ```yaml
 - hosts: servers
   roles:
-    - role: smartassistco.cloudbootstrap.docker-compose
+    - role: smartassistco.cloudbootstrap.docker_compose
       become: yes
 ```
 
@@ -37,7 +37,7 @@ With variables:
 ```yaml
 - hosts: servers
   roles:
-    - role: smartassistco.cloudbootstrap.docker-compose
+    - role: smartassistco.cloudbootstrap.docker_compose
       become: yes
       docker_compose_version: '2.5.1'
 ```

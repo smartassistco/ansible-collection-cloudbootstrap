@@ -28,7 +28,7 @@ Example Playbook
 ```yaml
 - hosts: servers
   roles:
-    - role: smartassistco.cloudbootstrap.ecs-agent
+    - role: smartassistco.cloudbootstrap.ecs_agent
       become: yes
       ecs_cluster_name: 'my-cluster'
 ```

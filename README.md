@@ -29,8 +29,8 @@ collections:
 - hosts: all
   roles:
     - smartassistco.cloudbootstrap.docker
-    - smartassistco.cloudbootstrap.docker-compose
-    - smartassistco.cloudbootstrap.ecr-credential-helper
+    - smartassistco.cloudbootstrap.docker_compose
+    - smartassistco.cloudbootstrap.ecr_credential_helper
   vars:
     docker_service_state: restarted
     docker_compose_version: '2.5.0'

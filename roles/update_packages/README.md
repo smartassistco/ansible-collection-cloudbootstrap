@@ -24,6 +24,6 @@ Example Playbook
 ```yaml
 - hosts: servers
   roles:
-    - role: smartassistco.cloudbootstrap.update-packages
+    - role: smartassistco.cloudbootstrap.update_packages
       become: yes
 ```

@@ -27,6 +27,6 @@ Example Playbook
 ```yaml
 - hosts: servers
   roles:
-    - role: smartassistco.cloudbootstrap.ecr-credential-helper
+    - role: smartassistco.cloudbootstrap.ecr_credential_helper
       become: yes
 ```
