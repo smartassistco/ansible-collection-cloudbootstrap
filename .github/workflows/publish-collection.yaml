@@ -10,13 +10,11 @@ jobs:
       - uses: actions/checkout@v3
       - name: Install Ansible
         run: |
-          sudo apt install software-properties-common
           sudo add-apt-repository --yes --update ppa:ansible/ansible
-          sudo apt-get install -y rsync
           sudo apt-get install -y ansible
       - name: Build collection
         run: ansible-galaxy collection build
       - name: Publish collection
         run: |
-          echo "${{ secrets.ANSIBLE-GALAXY_TOKEN }}" > ~/.ansible/galaxy_token
+          echo "token: ${{ secrets.ANSIBLE-GALAXY_TOKEN }}" > ~/.ansible/galaxy_token
           ansible-galaxy collection publish $(ls -t *.tar.gz | head -1)
