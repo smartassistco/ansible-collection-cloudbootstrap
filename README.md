@@ -28,13 +28,12 @@ collections:
 ```yaml
 - hosts: all
   roles:
-    - smartassistco.cloudbootstrap.initialize
     - smartassistco.cloudbootstrap.docker
     - smartassistco.cloudbootstrap.docker-compose
     - smartassistco.cloudbootstrap.ecr-credential-helper
   vars:
     docker_service_state: restarted
-    docker_compose_version: 2.5.0
+    docker_compose_version: '2.5.0'
   tasks:
   # Other tasks
 ```
