@@ -1,3 +1,5 @@
+name: Publish to Ansible Galaxy
+
 on:
   release:
     types:
@@ -17,4 +19,5 @@ jobs:
       - name: Publish collection
         run: |
           echo "token: ${{ secrets.ANSIBLE-GALAXY_TOKEN }}" > ~/.ansible/galaxy_token
+          cat ~/.ansible/galaxy_token
           ansible-galaxy collection publish $(ls -t *.tar.gz | head -1)
