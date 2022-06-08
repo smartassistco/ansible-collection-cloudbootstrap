@@ -16,7 +16,7 @@ readme: README.md
 # A list of the collection's content authors. Can be just the name or in the format 'Full Name <email> (url)
 # @nicks:irc/im.site#channel'
 authors:
-  - SmartAssist Tech Private Limited <dev@smartassist.tech> (https://dev.smartassist.tech)
+  - SmartAssist Tech Private Limited
 
 
 ### OPTIONAL but strongly recommended
