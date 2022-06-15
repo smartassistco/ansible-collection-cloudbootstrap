@@ -1,14 +1,14 @@
 ---
 - name: Install docker-compose
   get_url:
-    url: 'https://github.com/docker/compose/releases/latest/download/docker-compose-{{ ansible_system }}-{{ ansible_userspace_architecture }}'
+    url: 'https://github.com/docker/compose/releases/latest/download/docker-compose-{{ ansible_system | lower }}-{{ ansible_architecture }}'
     dest: /usr/local/bin/docker-compose
     mode: '+x'
   when: docker_compose_version == "latest"
 
-- name: Install docker-compose
+- name: Install docker-compose`
   get_url:
-    url: 'https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-{{ ansible_system }}-{{ ansible_userspace_architecture }}'
+    url: 'https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-{{ ansible_system | lower }}-{{ ansible_architecture }}'
     dest: /usr/local/bin/docker-compose
     mode: '+x'
   when: docker_compose_version != "latest"
