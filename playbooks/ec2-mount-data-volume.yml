@@ -1,0 +1,27 @@
+# Makes a newly attached EBS data volume available to the instance
+- hosts: all
+  tasks:
+    - name: Format partition
+      community.general.filesystem:
+        dev: /dev/nvme1n1
+        fstype: xfs
+
+    - name: Reload facts
+      ansible.builtin.setup:
+
+    - name: Mount partition to /data
+      ansible.posix.mount:
+        src: "UUID={{ ansible_device_links['uuids']['nvme1n1'][0] }}"
+        path: /data
+        fstype: xfs
+        opts: defaults,nofail
+        passno: 2
+        boot: yes
+        state: mounted
+        backup: yes
+
+    - name: Change /data permissions
+      ansible.builtin.file:
+        path: /data
+        owner: ec2-user
+        group: ec2-user
